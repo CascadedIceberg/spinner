@@ -1,70 +1,17 @@
-process.stdout.write('hello from spinner1.js... \rheyyy\n');
 
+let frameDelay = 200;
+const animFrames = ['|', '/', '-', '\\'];
+const timeout = frameDelay * animFrames.length;
 
-setTimeout(() => {
-  process.stdout.write('\r|   ');
-}, 100);
-
-setTimeout(() => {
-  process.stdout.write('\r/   ');
-}, 300);
-
-setTimeout(() => {
-  process.stdout.write('\r-   ');
-}, 500);
+const animLoopID = setInterval(() => {
+  for (let i = 0; i < animFrames.length; i++) {
+    setTimeout(() => {
+      process.stdout.write(`\r ${animFrames[i]}   `);
+    }, frameDelay * i);
+  }
+}, timeout);
 
 setTimeout(() => {
-
-  process.stdout.write('\r\\   '); 
-}, 700);
-
-setTimeout(() => {
-  process.stdout.write('\r|   ');
-}, 900);
-
-setTimeout(() => {
-  process.stdout.write('\r/   ');
-}, 1100);
-
-setTimeout(() => {
-  process.stdout.write('\r-   ');
-}, 1300);
-
-setTimeout(() => {
-
-  process.stdout.write('\r\\   '); 
-}, 1500);
-
-setTimeout(() => {
-  process.stdout.write('\r|   ');
-}, 1700);
-
-setTimeout(() => {
-  process.stdout.write('\r/   ');
-}, 1900);
-
-setTimeout(() => {
-  process.stdout.write('\r-   ');
-}, 2100);
-
-setTimeout(() => {
-
-  process.stdout.write('\r\\   '); 
-}, 2300);
-
-setTimeout(() => {
-  process.stdout.write('\r|   ');
-}, 2500);
-
-setTimeout(() => {
-  process.stdout.write('\r/   ');
-}, 2700);
-
-setTimeout(() => {
-  process.stdout.write('\r-   ');
-}, 2900);
-
-setTimeout(() => {
-
-  process.stdout.write('\r\\   '); 
-}, 3100);
+  clearInterval(animLoopID);
+  process.stdout.write('\n');
+}, 4000);
